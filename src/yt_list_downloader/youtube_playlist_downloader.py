@@ -8,6 +8,7 @@ import tqdm as tqdm
 from googleapiclient.discovery import build
 
 from youtube_downloader import download_videos_by_id
+from yt_list_downloader.input import playlists
 
 VIDEO_WATCH_IDS = """6cFU7KVgb0w
 BDEqF1Xd7-s
@@ -271,7 +272,9 @@ def main():
 
     # print_content_length(total_hours, total_minutes, total_seconds)
 
-    download_videos_by_id(VIDEO_WATCH_IDS)
+    playlist_ids = get_playlist_ids_from(playlists)
+
+    download_videos_by_id(playlist_ids)
 
 
 def print_content_length(total_hours, total_minutes, total_seconds):
